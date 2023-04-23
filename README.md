@@ -1,4 +1,5 @@
 Labb1_EntityFramework
+
 Krav på datastrukturen
 
 Följande är krav på den datastruktur du skapar i programmet.

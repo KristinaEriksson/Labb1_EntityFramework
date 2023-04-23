@@ -1,0 +1,19 @@
+﻿
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Admin</h1> 
+<hr />
+<h3>Admin login</h3>
+<p>Sign in as admin, and get access to more services.</p>
+<hr />
+<form asp-action="Login">
+    <div class="form-group">
+        <label for="FullName" class="control-label"></label>
+        <input type="text" name="FullName" class="form-control" id="fullname" placeholder="Fill in your full name" required />
+        <small class="form-text text-muted">Only admins is able to sign in</small>
+    </div>
+    <br />
+    <input type="submit" value="Sign in" class="btn btn-primary" />
+</form>

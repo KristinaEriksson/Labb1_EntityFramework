@@ -1,0 +1,73 @@
+﻿@model IEnumerable<Labb1_EntityFramework.Models.LeaveList>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Leave list</h1>
+
+<p class="create">
+    <a asp-action="Create">Create new leave application</a>
+</p>
+<hr />
+<form asp-action="Index">
+    <div class="form-group">
+        <label for="SearchString" class="control-label">Search leave applications:</label>
+        <input type="text" name="SearchString" placeholder="First name" />
+        <input type="submit" value="Search" class="btn btn-primary" />
+    </div>
+    <a href="@Url.Action("Index")">Clear search</a>
+</form>
+<hr />
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.TypeOfLeaves)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Employees)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.StartDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.EndDate)
+            </th><th>
+                @Html.DisplayNameFor(model => model.NumberOfDays)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.RegisteredDate)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Employees.FullName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TypeOfLeaves.LeaveType)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.StartDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.EndDate)
+            </td><td>
+                @Html.DisplayFor(modelItem => item.NumberOfDays)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.RegisteredDate)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.LeaveListID">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.LeaveListID">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.LeaveListID">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

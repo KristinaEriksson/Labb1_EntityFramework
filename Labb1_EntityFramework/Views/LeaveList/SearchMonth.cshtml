@@ -1,0 +1,76 @@
+﻿@model IEnumerable<Labb1_EntityFramework.Models.LeaveList>
+@{
+    ViewData["Title"] = "SearchMonth";
+}
+
+<h1>Search month</h1>
+<hr />
+<form asp-action="SearchMonth">
+    <div class="form-group">
+        <label for="SearchMonth" class="control-label">Search month:</label>
+        <input type="datetime" name="SearchMonth" value="yyyy-mm" />
+        <input type="submit" value="Search" class="btn btn-primary" />
+    </div>
+    <a href="@Url.Action("SearchMonth")">Clear search</a>
+</form>
+<hr />
+<p>
+    <a asp-controller="Home" asp-action="Index">Log out</a>
+</p>
+@if (Model.Any())
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Employees)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.TypeOfLeaves)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.StartDate)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.EndDate)
+                </th><th>
+                    @Html.DisplayNameFor(model => model.NumberOfDays)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.RegisteredDate)
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Employees.FullName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.TypeOfLeaves.LeaveType)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.StartDate)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.EndDate)
+                    </td><td>
+                        @Html.DisplayFor(modelItem => item.NumberOfDays)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.RegisteredDate)
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+else
+{
+    <p>No results found.</p>
+}
+
+
